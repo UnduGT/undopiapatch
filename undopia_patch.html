@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Undopia Patch</title>
+        <link href="https://i.imgur.com/0RHC1Oa.png" rel="shortcut icon" type="image/png" />
+
+        <style>
+            :root {
+                --bh: 1080px;
+            }
+            html {
+                height: 100%;
+            }
+            body {
+                height: 100%;
+                margin: 0;
+                overflow-x: hidden;
+            }
+            #background {
+                background-size: cover;
+                background-position-y: center;
+                position: fixed;
+                height: 100%;
+                width: calc(var(--bh) * 8);
+                animation: move 60s linear infinite;
+            }
+            @keyframes move {
+                0%{
+                    transform: translate3d(0, 0, 0);
+                    -webkit-transform: translate3d(0, 0, 0);
+                    -ms-transform: translate3d(0, 0, 0);
+                }
+                100%{
+                    transform: translate3d(calc(-1 * calc(var(--bh) * 4)), 0, 0);
+                    -webkit-transform: translate3d(calc(-1 * calc(var(--bh) * 4)), 0, 0);
+                    -ms-transform: translate3d(calc(-1 * calc(var(--bh) * 4)), 0, 0);
+                }
+            }
+            #logo {
+                background-image: url("https://i.imgur.com/Iyw8yJX.png");
+                background-repeat: no-repeat;
+                background-size: contain;
+                margin: 0 auto 0 50%;
+                transform: translate(-50%, 15%);
+                -webkit-transform: translate(-50%, 15%);
+                -ms-transform: translate(-50%, 15%);
+                height: 150px;
+            }
+            .mainbox {
+                background-color: #9105b2;
+                border: 15px outset #a931c5;
+                opacity: 0.9;
+                z-index: 10;
+                padding: 10px;
+            }
+            .fullbox {
+                background-color: #8e8f8e;
+                border: 10px outset #b1b1b1;
+                color: white;
+                font-size: 20pt;
+                padding: 10px 10px 10px 55px;
+                z-index: 9;
+                position: relative;
+                cursor: pointer;
+                -webkit-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+            }
+            .mainbox_install {
+                background-color: #058ab2;
+                border: 15px outset #31b4c5;
+                opacity: 0.9;
+                z-index: 10;
+                padding: 10px;
+            }
+            .fullbox_install {
+                background-color: #648194;
+                border: 10px outset #7893b3;
+                color: white;
+                font-size: 20pt;
+                padding: 10px 10px 10px 55px;
+                z-index: 9;
+                position: relative;
+                cursor: pointer;
+                -webkit-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+            }
+            .fullbox:hover, .fullbox_install:hover {
+                background-color: #3fb603;
+                border: 10px outset #4cdb04;
+            }
+            .fullboxdesc {
+                background-color: #8e8f8e;
+                border: 10px outset #b1b1b1;
+                color: white;
+                padding: 10px;
+                z-index: 7;
+                position: relative;
+            }
+            .filebox {
+                background-color: #0024ef;
+                border: 10px outset #2445ff;
+                color: white;
+                font-size: 20pt;
+                padding: 10px;
+                z-index: 9;
+                position: relative;
+                cursor: pointer;
+                -webkit-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+            }
+            .filebox:hover {
+                background-color: #3fb603;
+                border: 10px outset #4cdb04;
+            }
+            .fileboxdesc {
+                background-color: #0024ef;
+                border: 10px outset #2445ff;
+                color: white;
+                padding: 10px;
+                z-index: 7;
+                position: relative;
+            }
+            .blackborder_desc {
+                border: 3px solid black;
+                margin: -13px 13px 0 13px;
+                display: none;
+            }
+            .whiteborder {
+                border: 4px solid #FFFFFF;
+                margin: 0 auto 0 auto;
+                width: 1200px;
+                z-index: 9;
+                position: relative;
+            }
+            .blackborder {
+                border: 3px solid black;
+            }
+            .blackborder_gui {
+                margin-top: 25px;
+                border: 3px solid black;
+                z-index: 8;
+                position: relative;
+            }
+            .blackborder_gui:hover {
+                border: 3px solid white;
+            }
+            .blackborder_gui_file {
+                margin-top: 15px;
+                border: 3px solid black;
+                z-index: 8;
+                position: relative;
+                -webkit-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+            }
+            .blackborder_gui_file:hover {
+                border: 3px solid white;
+            }
+            .blackborder_gui_spoiler {
+                margin-top: 15px;
+                border: 2px solid black;
+                z-index: 8;
+                height: 30px;
+                -webkit-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+                display: inline-block;
+            }
+            .blackborder_gui_spoiler:hover {
+                border: 2px solid white;
+            }
+            .spoiler {
+                position: relative;
+                background-color: #f60000;
+                border: 5px outset #ff2626;
+                padding: 0px 5px 0px 5px;
+                cursor: pointer;
+                display: inline-block;
+                height: 20px;
+                -webkit-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+            }
+            .spoiler:hover {
+                background-color: #3fb603;
+                border: 5px outset #4cdb04;
+            }
+            .download {
+                background-color: #f60000;
+                border: 5px outset #ff2626;
+                padding: 0px 5px 0px 5px;
+                cursor: pointer;
+                height: 30px;
+                -webkit-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+            }
+            .blackborder_download {
+                border: 3px solid black;
+                z-index: 8;
+                position: relative;
+                display: inline-block;
+                height: 40px;
+                width: 200px;
+            }
+            .blackborder_download:hover {
+                border: 3px solid white;
+            }
+            .download:hover {
+                background-color: #3fb603;
+                border: 5px outset #4cdb04;
+            }
+            .filetable {
+                width: 100%;
+                text-align: center;
+            }
+            .filetable tr{
+                line-height: 30px;
+            }
+            h2 {
+                margin: 0;
+            }
+            .panorama {
+                margin: 50px 0 0 0;
+            }
+            .panorama img {
+                width: 500px;
+                position: relative;
+                z-index: 8;
+                display: inline-block;
+                margin-bottom: 5px;
+            }
+            .panorama_name_div {
+                width: 500px;
+                display: inline-block;
+                position: absolute;
+                left: 10px;
+                z-index: 9;
+                text-align: center;
+                padding: 10px 0 10px 0;
+            }
+            .panorama_name {
+                font-size: 25pt;
+                font-weight: bold;
+                text-shadow: 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black;
+            }
+            .icon {
+                background-position: center;
+                background-size: contain;
+                height: 45px;
+                width: 45px;
+                display: inline-block;
+                position: relative;
+                position: absolute;
+                top: 2.5px;
+                left: 2.5px;
+            }
+            #uglogo {
+                background-image: url("https://i.imgur.com/LTSbdlu.png");
+                background-position: center;
+                background-size: cover;
+                display: inline-block;
+                position: relative;
+                margin: 30px 0 0 50%;
+                transform: translateX(-55%);
+                -webkit-transform: translateX(-55%);
+                -ms-transform: translateX(-55%);
+                z-index: 9;
+                height: 200px;
+                width: 200px;
+            }
+            .spoiler_hide{
+                display: none;
+            }
+            .bold {
+                font-weight: bold;
+            }
+            .specialt {
+                border: 0.5px solid rgba(255,255,255,0.5);
+                background-color: rgba(0,0,0,0.2);
+                padding: 1px 3px 1px 3px;
+            }
+            .specialb {
+                color: black;
+                border: 0.5px solid rgba(0,0,0,0.5);
+                background-color: rgba(255,255,255,0.5);
+                padding: 1px 3px 1px 3px;
+                border-radius: 5px;
+                box-shadow: 1px 1px 3px black;
+            }
+            .specialbm {
+                color: white;
+                text-shadow: 2px 2px 0px black;
+                border: 2px outset rgba(0,0,0,0.8);
+                background-color: rgba(163, 163, 163, 0.8);
+                padding: 2px 4px 2px 4px;
+            }
+            .specialblackb {
+                border: 2px solid rgba(0,0,0,0.8);
+                position: relative;
+                padding: 4px 0 4px 0;
+            }
+            .iconuni {
+                width: 18px;
+                transform: translateY(20%);
+                -webkit-transform: translateY(20%);
+                -ms-transform: translateY(20%);
+            }
+            .imgpacks {
+                display: inline-block;
+                margin: 5px 0 5px 0;
+                width: 500px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script>
+
+             $(document).ready(function() {
+
+                $(".fullbox").click(function(){
+                    $(this).parent().next().slideToggle("slow")
+                });
+
+                $(".fullbox_install").click(function(){
+                    $(this).parent().next().slideToggle("slow")
+                });
+
+                $(".filebox").click(function(){
+                    $(this).parent().next().slideToggle("slow")
+                });
+                $(".spoiler").click(function(){
+                    $(this).parent().next().slideToggle("slow")
+                });
+
+                var backgrounds = [
+                                    'https://i.imgur.com/huCkKYl.jpg', 
+                                    'https://i.imgur.com/19RcRkJ.jpg', 
+                                    'https://i.imgur.com/EK6XQMI.jpg',
+                                    'https://i.imgur.com/SOaNnfT.jpg',
+                                    'https://i.imgur.com/EqBp52B.jpg',
+                                    'https://i.imgur.com/fRbE9y2.jpg',
+                                    'https://i.imgur.com/YdSuge3.jpg'
+                                  ];
+
+                var rsp_backgrounds = [
+                                    'https://i.imgur.com/9qA5DIP.png', 
+                                    'https://i.imgur.com/cw9syV2.png', 
+                                    'https://i.imgur.com/aiNqmNF.png',
+                                    'https://i.imgur.com/DCn1U0t.png',
+                                    'https://i.imgur.com/wUODvZV.png',
+                                    'https://i.imgur.com/zAr0vX3.png',
+                                    'https://i.imgur.com/eQYMQYe.png'
+                                    ];
+
+                const random = Math.floor(Math.random() * backgrounds.length);
+
+                var randomN = random;
+
+                $("#background").css("background-image", "url('"+backgrounds[randomN]+"')")
+
+                $("#rsp").css("background-image", "url('"+rsp_backgrounds[randomN]+"')")
+
+                var height = $('#background').css("height");
+
+                $(':root').css("--bh", height);
+             });
+        </script>
+    </head>
+    <body>
+        <div id="background" style="background-image: url('')"></div>
+        <div id="logo"></div>
+        <div class="whiteborder">
+            <div class="mainbox">
+
+                <div class="blackborder_gui" style="margin-top:0;">
+                    <div class="fullbox"><span class="icon" style="background-image: url('https://i.imgur.com/qY2QEAz.png');"></span>Main</div>
+                </div>
+                <div class="blackborder_desc">
+                    <div class="fullboxdesc">
+                        Undopia Patch ist ein Ressourcenpaket, mit dem Vanilla so weit wie möglich verbessert werden soll, ohne es grundlegend zu ändern.
+                        Es fügt Dinge hinzu, die perfekt in das Vanilla-Gameplay passen, oder korrigiert visuelle Fehler.
+                        <br/><br/>
+                        Volle Beschreibung auf Englisch mit Bildern gibt es <a href="https://www.curseforge.com/minecraft/texture-packs/undopia-patch" target="_blank">hier</a>.
+                        <div class="blackborder_gui_file">
+                            <div class="filebox">Files</div>
+                        </div>
+                        <div class="blackborder_desc">
+                            <div class="fileboxdesc">
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">1.16.5</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURL('https://www.curseforge.com/minecraft/texture-packs/undopia-patch/download/3263460');">Download</div></div></td>
+                                        <td>Optifine HD U G7</td>
+                                        <td>02.04.2021</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blackborder_gui">
+                    <div class="fullbox"><span class="icon" id="rsp"></span>Reksquad Panorama</div>
+                </div>
+                <div class="blackborder_desc">
+                    <div class="fullboxdesc">
+                        Eine Sammlung von Hintergründen, die auf vergangenen Welten basieren.
+                        <div class="blackborder_gui_file">
+                            <div class="filebox">Files</div>
+                        </div>
+                        <div class="blackborder_desc">
+                            <div class="fileboxdesc">
+
+                                <div class="panorama" style="margin-top:15px;">
+                                    <img src="https://i.imgur.com/JNt2cwx.jpg">
+                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.8¹</p></div>
+                                </div>
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">1.16.5</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURL('https://drive.google.com/uc?export=download&id=1sStLUFfbCkH7i_O4kkBcSEyCSx_XJxMz');">Download</div></div></td>
+                                        <td>Optifine HD U G7</td>
+                                        <td>05.04.2021</td>
+                                    </tr>
+                                </table>
+
+                                <div class="panorama">
+                                    <img src="https://i.imgur.com/3si6zOz.jpg">
+                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.8²</p></div>
+                                </div>
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">1.16.5</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURL('https://drive.google.com/uc?export=download&id=14auf59vjzH4ww8oFVZTDHDu-WhcSADN9');">Download</div></div></td>
+                                        <td>Optifine HD U G7</td>
+                                        <td>05.04.2021</td>
+                                    </tr>
+                                </table>
+
+                                <div class="panorama">
+                                    <img src="https://i.imgur.com/e9xI34e.jpg">
+                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.10</p></div>
+                                </div>
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">1.16.5</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURL('https://drive.google.com/uc?export=download&id=1BhYgEt35gg2bH7C5IChRyCv_An6DRG-C');">Download</div></div></td>
+                                        <td>Optifine HD U G7</td>
+                                        <td>05.04.2021</td>
+                                    </tr>
+                                </table>
+
+                                <div class="panorama">
+                                    <img src="https://i.imgur.com/8kGBD1Y.jpg">
+                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.12¹</p></div>
+                                </div>
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">1.16.5</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURL('https://drive.google.com/uc?export=download&id=1YePv9hb64A44-cPHDdWeRJ41qrpUxPyr');">Download</div></div></td>
+                                        <td>Optifine HD U G7</td>
+                                        <td>05.04.2021</td>
+                                    </tr>
+                                </table>
+
+                                <div class="panorama">
+                                    <img src="https://i.imgur.com/BWFKfEm.jpg">
+                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.12²</p></div>
+                                </div>
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">1.16.5</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURL('https://drive.google.com/uc?export=download&id=1o7kxnGohf9BR1HIky0Y70jo4WOv48h00');">Download</div></div></td>
+                                        <td>Optifine HD U G7</td>
+                                        <td>05.04.2021</td>
+                                    </tr>
+                                </table>
+
+                                <div class="panorama">
+                                    <img src="https://i.imgur.com/LpVr7v2.jpg">
+                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.13</p></div>
+                                </div>
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">1.16.5</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURL('https://drive.google.com/uc?export=download&id=1bLjCySpus-Cx6HknjeSJ9dvPq_6zcR9K');">Download</div></div></td>
+                                        <td>Optifine HD U G7</td>
+                                        <td>05.04.2021</td>
+                                    </tr>
+                                </table>
+
+                                <div class="panorama">
+                                    <img src="https://i.imgur.com/RjCIXpE.jpg">
+                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.14</p></div>
+                                </div>
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">1.16.5</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURL('https://drive.google.com/uc?export=download&id=1Qt7pjR-28TKvNjSnfqszFQ81HPOSwrEN');">Download</div></div></td>
+                                        <td>Optifine HD U G7</td>
+                                        <td>05.04.2021</td>
+                                    </tr>
+                                </table>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blackborder_gui">
+                    <div class="fullbox"><span class="icon" style="background-image: url('https://i.imgur.com/IvsTJnB.png');"></span>Reksquad Paintings</div>
+                </div>
+                <div class="blackborder_desc">
+                    <div class="fullboxdesc">
+                        Ändert die Ingame Bilder zu Nostalgischen Reksquad Bildern.
+                        <div class="blackborder_gui_file">
+                            <div class="filebox">Files</div>
+                        </div>
+                        <div class="blackborder_desc">
+                            <div class="fileboxdesc">
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">1.16.5</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURL('https://drive.google.com/uc?export=download&id=1aGxNLHd5qITxDlCzL3zNPvc6-BixqwoC');">Download</div></div></td>
+                                        <td>Optifine HD U G7</td>
+                                        <td>05.04.2021</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blackborder_gui">
+                    <div class="fullbox"><span class="icon" style="background-image: url('https://i.imgur.com/lLZYGVB.png');"></span>Vanilla Tweaks</div>
+                </div>
+                <div class="blackborder_desc">
+                    <div class="fullboxdesc">
+                        Vanilla Tweaks verändert das Spiel mithilfe von Resource Packs und Datapacks geringfügig und versucht, das Vanilla-Feeling beizubehalten, genau wie beim Undopia Patch.
+                        Vanilla Tweaks und Undopia Patch haben einige Features, die gleich sind, aber auch Features, die sich gegenseitig ergänzen und das Spiel viel besser machen.<br/>
+                        Hier kann man eine vorgefertigte Konfiguration von Vanilla Tweaks herunterladen, die den Undopia Patch perfekt ergänzt. Natürlich kann man diesen auch anpassen, aber bestimmte Features von Vanilla Tweaks funktionieren nicht mit Undopia Patch.<br/>
+                        <div class="blackborder_gui_spoiler">
+                            <span class="spoiler">Vanilla Tweaks Konfiguration</span>
+                        </div>
+                        <div class="spoiler_hide">
+                            <ul>
+                                <li>Aesthetic
+                                    <ul>
+                                        <li>BushyLeaves</li>
+                                        <li>DifferentStems</li>
+                                        <li>RedIronGolemFlowers</li>
+                                        <li>BetterParticles</li>
+                                        <li>UniqueDyes</li>
+                                        <li>SplashXpBottle</li>
+                                    </ul>
+                                </li>
+                                <li>Terrain
+                                    <ul>
+                                        <li>FancySunflowers</li>
+                                    </ul>
+                                </li>
+                                <li>Variation
+                                    <ul>
+                                        <li>VariatedBricks</li>
+                                        <li>VariatedMushroomBlocks</li>
+                                    </ul>
+                                </li>
+                                <li>Utility
+                                    <ul>
+                                        <li>VisualInfestedStoneItems</li>
+                                        <li>FullAgeCropMarker</li>
+                                        <li>Age25Kelp</li>
+                                        <li>ClearBannerPatterns</li>
+                                        <li>StickyPistonSides</li>
+                                        <li>BetterObservers</li>
+                                        <li>CompassLodestone</li>
+                                        <li>DiminishingTools</li>
+                                        <li>BrewingGuide</li>
+                                        <li>VisualHoney</li>
+                                    </ul>
+                                </li>
+                                <li>Unobtrusive
+                                    <ul>
+                                        <li>AlternateEnchantGlint</li>
+                                    </ul>
+                                </li>
+                                <li>3d
+                                    <ul>
+                                        <li>3DSunMoon</li>
+                                    </ul>
+                                </li>
+                                <li>Fixes
+                                    <ul>
+                                        <li>JappaSigns</li>
+                                        <li>JappaCompass</li>
+                                        <li>JappaClock</li>
+                                        <li>JappaToasts</li>
+                                        <li>JappaStatsIcons</li>
+                                        <li>SoulSoilSoulCampfire</li>
+                                        <li>ProperBreakParticles</li>
+                                        <li>NoBowlParticles</li>
+                                        <li>VillagerCloakFix</li>
+                                        <li>GuardianPixelFix</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="blackborder_gui">
+                            <div class="filebox">Files</div>
+                        </div>
+                        <div class="blackborder_desc">
+                            <div class="fileboxdesc">
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">1.16.5</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURLN('https://vanillatweaks.net/share#mVqJvC');">Download</div></div></td>
+                                        <td>Optifine HD U G7</td>
+                                        <td>05.04.2021</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blackborder_gui">
+                    <div class="fullbox"><span class="icon" style="background-image: url('https://i.imgur.com/lLCa03j.png');"></span>OptiFine</div>
+                </div>
+                <div class="blackborder_desc">
+                    <div class="fullboxdesc">
+                        OptiFine ist eine Minecraft-Optimierungsmod.<br/>
+                        Es ermöglicht Minecraft, schneller zu laufen und besser auszusehen, mit vollständiger Unterstützung für HD-Texturen und vielen Konfigurationsoptionen.<br/>
+                        OptiFine und Undopia Patch zusammen fügen einige Features hinzu. Allerdings kann man auch Undopia Patch ohne OptiFine problemlos verwenden.
+                        <div class="blackborder_gui_file">
+                            <div class="filebox">Getestete Versionen</div>
+                        </div>
+                        <div class="blackborder_desc">
+                            <div class="fileboxdesc">
+                                <table class="filetable">
+                                    <tr>
+                                        <td style="text-align: left;">HD U G7</td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURL('https://optifine.net/downloadx?f=OptiFine_1.16.5_HD_U_G7.jar&x=8dcc110bf574631f9ba3c651b42711ee');">Download</div></div></td>
+                                        <td>1.16.5</td>
+                                        <td>Forge 36.0.42</td>
+                                        <td>04.03.2021</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <br/>
+        <div class="whiteborder">
+            <div class="mainbox_install">
+                <div class="blackborder_gui" style="margin-top:0;">
+                    <div class="fullbox_install"><span class="icon" style="background-image: url('https://i.imgur.com/P97M9X3.gif');"></span>Installation</div>
+                </div>
+                <div class="blackborder_desc">
+                    <div class="fullboxdesc">
+                        <ol>
+                            <li>
+                                Lade dir die Dateien herunter die du haben willst und speichere diese in deinem Minecraft <span class="specialt">resourcepacks</span> Verzeichnis.<br/><br/>
+
+                                <ul style="line-height: 150%;">
+                                    <li><span class="bold">Windows</span><br/>
+                                    Öffne <span class="specialt">Ausführen</span> im Startmenü oder mit Hilfe von <span class="specialb"><img class="iconuni" src="https://i.imgur.com/tZc2Eno.png"></span> + <span class="specialb">R</span> und gib <span class="specialt">%appdata%</span> ein. In diesem Verzeichnis öffnest du <span class="specialt">.minecraft</span> und darin befindet sich dein <span class="specialt">resourcepacks</span> Verzeichnis.</li>
+                                    <br/>  
+                                    <li><span class="bold">Mac</span><br/>
+                                    Geh auf <span class="specialt">Gehe zu</span> und drücke <span class="specialb">⌥</span> und geh auf <span class="specialt">Library</span>. Gehe danach in den Ordner <span class="specialt">Application Support</span>. In diesem Verzeichnis öffnest du <span class="specialt">.minecraft</span> und darin befindet sich dein <span class="specialt">resourcepacks</span> Verzeichnis.</li>
+                                    <br/>
+                                    <li><span class="bold">Linux</span><br/>
+                                    Öffne deinen File-Manager und gib <span class="specialt">~/.minecraft/resourcepacks/</span> in der Adressleiste ein.</li>
+                                    <br/>
+                                    <li><span class="bold">Alternative</span><br/>
+                                    Starte Minecraft und geh auf <span class="specialblackb"><span class="specialbm">Options...</span></span>, <span class="specialblackb"><span class="specialbm">Resource Packs...</span></span> und drück auf <span class="specialblackb"><span class="specialbm">Open Pack Folder</span></span>.
+                                </ul>
+                            </li>
+                            <br/><br/>
+                            <li>
+                                Starte Minecraft und geh auf <span class="specialblackb"><span class="specialbm">Options...</span></span> und drück auf <span class="specialblackb"><span class="specialbm">Resource Packs...</span></span>.
+
+                                <ul style="line-height: 150%;"><br/>
+                                    <li>
+                                        Drück auf der linken Seite auf die Pakete die du haben willst, damit sie nach rechts verschoben werden. <br/>
+                                        Ordne diese in folgender Reihenfolge an:<br/>
+                                        <img class="imgpacks" src="https://i.imgur.com/xi7eCsT.png"/><br/>
+                                        <span class="bold">Hinweis:</span> Eine andere Anordnung kann zu fehlerhaften Ergebnissen führen.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="uglogo"></div>
+        <script>
+            function openURLN(url) {
+                    window.open(url, '_blank').focus();
+                }
+
+            function openURL(url) {
+                window.open(url, '_self').focus();
+            }
+        </script>
+    </body>
+</html>
