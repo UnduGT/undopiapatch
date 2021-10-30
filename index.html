@@ -178,6 +178,21 @@
             .blackborder_gui_spoiler:hover {
                 border: 2px solid white;
             }
+            .blackborder_gui_spoiler_v {
+                width: 100%;
+                margin-top: 15px;
+                border: 2px solid black;
+                z-index: 8;
+                height: 30px;
+                -webkit-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+                display: inline-block;
+            }
+            .blackborder_gui_spoiler_v:hover {
+                border: 2px solid white;
+            }
             .spoiler {
                 position: relative;
                 background-color: #f60000;
@@ -192,6 +207,24 @@
                 -o-transition: all 0.2s linear;
             }
             .spoiler:hover {
+                background-color: #3fb603;
+                border: 5px outset #4cdb04;
+            }
+            .spoiler_v {
+                width: 98.1%;
+                position: relative;
+                background-color: #f60000;
+                border: 5px outset #ff2626;
+                padding: 0px 5px 0px 5px;
+                cursor: pointer;
+                display: inline-block;
+                height: 20px;
+                -webkit-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+            }
+            .spoiler_v:hover {
                 background-color: #3fb603;
                 border: 5px outset #4cdb04;
             }
@@ -283,6 +316,9 @@
             .spoiler_hide{
                 display: none;
             }
+            .spoiler_hide_v{
+                display: none;
+            }
             .bold {
                 font-weight: bold;
             }
@@ -322,6 +358,34 @@
                 margin: 5px 0 5px 0;
                 width: 500px;
             }
+            .vanillatweaksfeaturebox {
+                display: inline-block;
+                text-align: center;
+                width: 200px;
+                margin: 10px 10px 0 0;
+                background-color: #00000050;
+                border-radius: 10px;
+            }
+            .vanillatweaksfeaturebox_img {
+                margin: 10px 0 0 0;
+                height: 90px;
+            }
+            .vanillatweaksfeaturebox_img img {
+                width: 90px;
+                height: 90px;
+            }
+            .vanillatweaksfeaturebox_title {
+                display: inline-block;
+                margin: 5px 0 10px 0;
+                vertical-align: top;
+                height: 2em;
+            }
+            .vanillatweaksfeaturebox_category {
+                font-size: 1.25em;
+                margin: 5px 0 0 0;
+                font-weight: bold;
+                text-shadow: 2px 2px #00000050;
+            }
         </style>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script>
@@ -340,6 +404,9 @@
                     $(this).parent().next().slideToggle("slow")
                 });
                 $(".spoiler").click(function(){
+                    $(this).parent().next().slideToggle("slow")
+                });
+                $(".spoiler_v").click(function(){
                     $(this).parent().next().slideToggle("slow")
                 });
 
@@ -617,67 +684,16 @@
                             <span class="spoiler">Vanilla Tweaks Konfiguration</span>
                         </div>
                         <div class="spoiler_hide">
-                            <ul>
-                                <li>Aesthetic
-                                    <ul>
-                                        <li>BushyLeaves</li>
-                                        <li>DifferentStems</li>
-                                        <li>RedIronGolemFlowers</li>
-                                        <li>BetterParticles</li>
-                                        <li>UniqueDyes</li>
-                                        <li>SplashXpBottle</li>
-                                    </ul>
-                                </li>
-                                <li>Terrain
-                                    <ul>
-                                        <li>FancySunflowers</li>
-                                    </ul>
-                                </li>
-                                <li>Variation
-                                    <ul>
-                                        <li>VariatedBricks</li>
-                                        <li>VariatedMushroomBlocks</li>
-                                    </ul>
-                                </li>
-                                <li>Utility
-                                    <ul>
-                                        <li>VisualInfestedStoneItems</li>
-                                        <li>FullAgeCropMarker</li>
-                                        <li>Age25Kelp</li>
-                                        <li>ClearBannerPatterns</li>
-                                        <li>StickyPistonSides</li>
-                                        <li>BetterObservers</li>
-                                        <li>CompassLodestone</li>
-                                        <li>DiminishingTools</li>
-                                        <li>BrewingGuide</li>
-                                        <li>VisualHoney</li>
-                                    </ul>
-                                </li>
-                                <li>Unobtrusive
-                                    <ul>
-                                        <li>AlternateEnchantGlint</li>
-                                    </ul>
-                                </li>
-                                <li>3d
-                                    <ul>
-                                        <li>3DSunMoon</li>
-                                    </ul>
-                                </li>
-                                <li>Fixes
-                                    <ul>
-                                        <li>JappaSigns</li>
-                                        <li>JappaCompass</li>
-                                        <li>JappaClock</li>
-                                        <li>JappaToasts</li>
-                                        <li>JappaStatsIcons</li>
-                                        <li>SoulSoilSoulCampfire</li>
-                                        <li>ProperBreakParticles</li>
-                                        <li>NoBowlParticles</li>
-                                        <li>VillagerCloakFix</li>
-                                        <li>GuardianPixelFix</li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <div onclick="vanillatweaks_get('1.16');" class="blackborder_gui_spoiler_v">
+                                <span class="spoiler_v">1.16</span>
+                            </div>
+                            <div id="vt_1.16" class="spoiler_hide_v">
+                            </div>
+                            <div onclick="vanillatweaks_get('1.17');" class="blackborder_gui_spoiler_v">
+                                <span class="spoiler_v">1.17</span>
+                            </div>
+                            <div id="vt_1.17" class="spoiler_hide_v">
+                            </div>
                         </div>
                         <div class="blackborder_gui">
                             <div class="filebox">Files</div>
@@ -693,7 +709,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: left;">1.17.1</td>
-                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURLN('https://vanillatweaks.net/share#mELfwu');">Download</div></div></td>
+                                        <td style="width: 10%;"><div class="blackborder_download"><div class="download" onclick="openURLN('https://vanillatweaks.net/share#7FAQhU');">Download</div></div></td>
                                         <td>Optifine HD U G9</td>
                                         <td>29.10.2021</td>
                                     </tr>
@@ -796,6 +812,199 @@
 
             function openURL(url) {
                 window.open(url, '_self').focus();
+            }
+
+            var vanillatweaksimages = {
+                "BushyLeaves": "https://i.imgur.com/SiJbIyo.png",
+                "DifferentStems": "https://i.imgur.com/3vzHarc.png",
+                "RedIronGolemFlowers": "https://i.imgur.com/OyIhLPo.png",
+                "BetterParticles": "https://i.imgur.com/kFqq12T.png",
+                "UniqueDyes": "https://i.imgur.com/wPpuswP.png",
+                "SplashXPBottle": "https://i.imgur.com/Ee9Ad4M.png",
+                "FancySunflowers": "https://i.imgur.com/aBvg7JK.png",
+                "VariatedBricks": "https://i.imgur.com/jhhgMfn.png",
+                "VariatedMushroomBlocks": "https://i.imgur.com/b2LWN86.png",
+                "VisualInfestedStoneItems": "https://i.imgur.com/yPkm7nZ.png",
+                "FullAgeCropMarker": "https://i.imgur.com/4pgHV94.png",
+                "Age25Kelp": "https://i.imgur.com/2R0MvH4.png",
+                "ClearBannerPatterns": "https://i.imgur.com/FFeaHx4.png",
+                "StickyPistonSides": "https://i.imgur.com/7mtmNjU.png",
+                "BetterObservers": "https://i.imgur.com/B4O7YXm.png",
+                "3DSunMoon": "https://i.imgur.com/vZc2YTJ.png",
+                "JappaSigns": "https://i.imgur.com/L6TI3SJ.png",
+                "JappaCompass": "https://i.imgur.com/MYsmcz5.png",
+                "JappaClock": "https://i.imgur.com/UuUr6B6.png",
+                "JappaToasts": "https://i.imgur.com/7eEmR3m.png",
+                "JappaStatsIcons": "https://i.imgur.com/0qeGdCy.png",
+                "SoulSoilSoulCampfire": "https://i.imgur.com/KMMX9TQ.png",
+                "ProperBreakParticles": "https://i.imgur.com/uSrgOpK.png",
+                "NoBowlParticles": "https://i.imgur.com/ypVsdgL.png",
+                "VillagerCloakFix": "https://i.imgur.com/KhmnuxJ.png",
+                "GuardianPixelFix": "https://i.imgur.com/OavB3t7.png",
+                "VariatedBookshelves": "https://i.imgur.com/VGyd1r3.png",
+                "DiminishingTools": "https://i.imgur.com/23mjXEH.png",
+                "VisualWaxedCopperItems": "https://i.imgur.com/HOp1ySY.png",
+                "UnlitRedstoneOre": "https://i.imgur.com/fhE7Ymq.png",
+                "CompassLodestone": "https://i.imgur.com/Z4WORES.png",
+                "BrewingGuide": "https://i.imgur.com/N69vH5u.png",
+                "VisualHoney": "https://i.imgur.com/qyIq4QQ.png",
+                "AlternateEnchantGlint": "https://i.imgur.com/mG8YLcy.png",
+                "3DChains": "https://i.imgur.com/cjDauNf.png",
+                "3DAmethyst": "https://i.imgur.com/6tL49pS.png"
+            }
+
+            var vanillatweakstext = {
+                "BushyLeaves": "Bushy Leaves",
+                "DifferentStems": "Different Stems",
+                "RedIronGolemFlowers": "Red Iron Golem Flowers",
+                "BetterParticles": "Colorful Enchanting Table Particles",
+                "UniqueDyes": "Unique Dyes",
+                "SplashXPBottle": "Splash Bottle o' Enchanting",
+                "FancySunflowers": "Fancy Sunflowers",
+                "VariatedBricks": "Variated Bricks",
+                "VariatedMushroomBlocks": "Variated Red Mushroom Blocks",
+                "VisualInfestedStoneItems": "Visual Infested Stone (Items)",
+                "FullAgeCropMarker": "Fully Aged Crop Marker",
+                "Age25Kelp": "Age 25 Kelp",
+                "ClearBannerPatterns": "Clear Banner Patterns",
+                "StickyPistonSides": "Sticky Piston Sides",
+                "BetterObservers": "Directional Observers",
+                "3DSunMoon": "3D Sun & Moon",
+                "JappaSigns": "Jappa Signs",
+                "JappaCompass": "Jappa Compass",
+                "JappaClock": "Jappa Clock",
+                "JappaToasts": "Jappa Toasts",
+                "JappaStatsIcons": "Jappa Stats Icons",
+                "SoulSoilSoulCampfire": "Soul Soil Soul Campfire",
+                "ProperBreakParticles": "Proper Break Particles",
+                "NoBowlParticles": "Don't Eat the Bowl!",
+                "VillagerCloakFix": "Villager Cloak Fix",
+                "GuardianPixelFix": "Guardian Pixel Fix",
+                "VariatedBookshelves": "Variated Bookshelves",
+                "DiminishingTools": "Diminishing Tools",
+                "VisualWaxedCopperItems": "Visual Waxed Copper (Items)",
+                "UnlitRedstoneOre": "Unlit Redstone Ore",
+                "CompassLodestone": "Compass Lodestone",
+                "BrewingGuide": "Brewing Guide",
+                "VisualHoney": "Visual Honey Stages",
+                "AlternateEnchantGlint": "Alternate Enchant Glint",
+                "3DChains": "3D Chains",
+                "3DAmethyst": "3D Amethyst Crystals"
+            }
+
+            var vanillatweaks_116 = [
+                "[Category]Aesthetic",
+                "DifferentStems",
+                "RedIronGolemFlowers",
+                "BetterParticles",
+                "UniqueDyes",
+                "SplashXPBottle",
+                "[Category]Terrain",
+                "BushyLeaves",
+                "FancySunflowers",
+                "[Category]Variation",
+                "VariatedBricks",
+                "VariatedMushroomBlocks",
+                "[Category]Utility",
+                "VisualInfestedStoneItems",
+                "FullAgeCropMarker",
+                "Age25Kelp",
+                "ClearBannerPatterns",
+                "StickyPistonSides",
+                "BetterObservers",
+                "CompassLodestone",
+                "DiminishingTools",
+                "BrewingGuide",
+                "VisualHoney",
+                "[Category]Unobstrusive",
+                "AlternateEnchantGlint",
+                "[Category]3D",
+                "3DSunMoon",
+                "[Category]Fixes",
+                "JappaSigns",
+                "JappaCompass",
+                "JappaClock",
+                "JappaToasts",
+                "JappaStatsIcons",
+                "SoulSoilSoulCampfire",
+                "ProperBreakParticles",
+                "NoBowlParticles",
+                "VillagerCloakFix",
+                "GuardianPixelFix"
+            ]
+            
+            var vanillatweaks_117 = [
+                "[Category]Aesthetic",
+                "DifferentStems",
+                "RedIronGolemFlowers",
+                "BetterParticles",
+                "UniqueDyes",
+                "SplashXPBottle",
+                "[Category]Terrain",
+                "BushyLeaves",
+                "FancySunflowers",
+                "[Category]Variation",
+                "VariatedBricks",
+                "VariatedMushroomBlocks",
+                "VariatedBookshelves",
+                "[Category]Utility",
+                "DiminishingTools",
+                "VisualInfestedStoneItems",
+                "VisualWaxedCopperItems",
+                "FullAgeCropMarker",
+                "Age25Kelp",
+                "ClearBannerPatterns",
+                "StickyPistonSides",
+                "BetterObservers",
+                "UnlitRedstoneOre",
+                "CompassLodestone",
+                "BrewingGuide",
+                "VisualHoney",
+                "[Category]Unobstrusive",
+                "AlternateEnchantGlint",
+                "[Category]3D",
+                "3DChains",
+                "3DAmethyst",
+                "3DSunMoon",
+                "[Category]Fixes",
+                "JappaToasts",
+                "JappaStatsIcons",
+                "SoulSoilSoulCampfire",
+                "ProperBreakParticles",
+                "NoBowlParticles",
+                "VillagerCloakFix"
+            ]
+
+            function vanillatweaks_get(version) {
+                
+                if (version == "1.16")
+                {
+                    var content = "";
+                    vanillatweaks_116.forEach((feature) =>  {
+                        if (feature.startsWith("[Category]"))
+                        {
+                            content += '<div class="vanillatweaksfeaturebox_category">'+feature.substring(10)+'</div>';
+                        }
+                        else {
+                            content += '<div class="vanillatweaksfeaturebox"><div class="vanillatweaksfeaturebox_img"><img src="'+vanillatweaksimages[feature]+'"/></div><div class="vanillatweaksfeaturebox_title">'+vanillatweakstext[feature]+'</div></div>';
+                        }
+                    });
+                    document.getElementById("vt_1.16").innerHTML = content;
+                }
+                else if (version == "1.17")
+                {
+                    var content = "";
+                    vanillatweaks_117.forEach((feature) =>  {
+                        if (feature.startsWith("[Category]"))
+                        {
+                            content += '<div class="vanillatweaksfeaturebox_category">'+feature.substring(10)+'</div>';
+                        }
+                        else {
+                            content += '<div class="vanillatweaksfeaturebox"><div class="vanillatweaksfeaturebox_img"><img src="'+vanillatweaksimages[feature]+'"/></div><div class="vanillatweaksfeaturebox_title">'+vanillatweakstext[feature]+'</div></div>';
+                        }
+                    });
+                    document.getElementById("vt_1.17").innerHTML = content;
+                }
             }
         </script>
     </body>
