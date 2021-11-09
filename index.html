@@ -10,7 +10,6 @@
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://undugt.github.io/undopiapatch/" />
         <meta property="og:image" content="https://i.imgur.com/qEe597g.png" />
-        <meta property="og:description" content="Undopia Patch - Alle Downloads" />
         <meta name="theme-color" content="#9006b1">
 
         <meta name="twitter:card" content="summary_large_image">
@@ -35,41 +34,30 @@
                 width: calc(var(--bh) * 8);
                 animation: move 60s linear infinite;
             }
-            @keyframes move {
-                0%{
-                    transform: translate3d(0, 0, 0);
-                    -webkit-transform: translate3d(0, 0, 0);
-                    -ms-transform: translate3d(0, 0, 0);
-                }
-                100%{
-                    transform: translate3d(calc(-1 * calc(var(--bh) * 4)), 0, 0);
-                    -webkit-transform: translate3d(calc(-1 * calc(var(--bh) * 4)), 0, 0);
-                    -ms-transform: translate3d(calc(-1 * calc(var(--bh) * 4)), 0, 0);
-                }
-            }
             #logo {
                 background-image: url("https://i.imgur.com/Iyw8yJX.png");
                 background-repeat: no-repeat;
                 background-size: contain;
-                margin: 0 auto 0 50%;
-                transform: translate(-50%, 15%);
-                -webkit-transform: translate(-50%, 15%);
-                -ms-transform: translate(-50%, 15%);
-                height: 150px;
+                background-position: center;
+                margin: 0 auto 25px 50%;
+                transform: translate(-50%, 60%);
+                -webkit-transform: translate(-50%, 60%);
+                -ms-transform: translate(-50%, 60%);
+                height: 140px;
             }
             .mainbox {
                 background-color: #9105b2;
-                border: 15px outset #a931c5;
+                border: 7px outset #a931c5;
                 opacity: 0.9;
                 z-index: 10;
                 padding: 10px;
             }
             .fullbox {
                 background-color: #8e8f8e;
-                border: 10px outset #b1b1b1;
+                border: 5px outset #b1b1b1;
                 color: white;
-                font-size: 20pt;
-                padding: 10px 10px 10px 55px;
+                font-size: 17pt;
+                padding: 7px 7px 7px 45px;
                 z-index: 9;
                 position: relative;
                 cursor: pointer;
@@ -80,17 +68,17 @@
             }
             .mainbox_install {
                 background-color: #058ab2;
-                border: 15px outset #31b4c5;
+                border: 7px outset #31b4c5;
                 opacity: 0.9;
                 z-index: 10;
                 padding: 10px;
             }
             .fullbox_install {
                 background-color: #648194;
-                border: 10px outset #7893b3;
+                border: 5px outset #7893b3;
                 color: white;
-                font-size: 20pt;
-                padding: 10px 10px 10px 55px;
+                font-size: 17pt;
+                padding: 7px 7px 7px 45px;
                 z-index: 9;
                 position: relative;
                 cursor: pointer;
@@ -101,22 +89,22 @@
             }
             .fullbox:hover, .fullbox_install:hover {
                 background-color: #3fb603;
-                border: 10px outset #4cdb04;
+                border: 5px outset #4cdb04;
             }
             .fullboxdesc {
                 background-color: #8e8f8e;
-                border: 10px outset #b1b1b1;
+                border: 5px outset #b1b1b1;
                 color: white;
-                padding: 10px;
+                padding: 15px;
                 z-index: 7;
                 position: relative;
             }
             .filebox {
                 background-color: #0024ef;
-                border: 10px outset #2445ff;
+                border: 5px outset #2445ff;
                 color: white;
-                font-size: 20pt;
-                padding: 10px;
+                font-size: 17pt;
+                padding: 7px;
                 z-index: 9;
                 position: relative;
                 cursor: pointer;
@@ -127,11 +115,11 @@
             }
             .filebox:hover {
                 background-color: #3fb603;
-                border: 10px outset #4cdb04;
+                border: 5px outset #4cdb04;
             }
             .fileboxdesc {
                 background-color: #0024ef;
-                border: 10px outset #2445ff;
+                border: 5px outset #2445ff;
                 color: white;
                 padding: 10px;
                 z-index: 7;
@@ -144,8 +132,8 @@
             }
             .whiteborder {
                 border: 4px solid #FFFFFF;
-                margin: 0 auto 0 auto;
-                width: 1200px;
+                margin: 5% auto 0 auto;
+                width: 800px;
                 z-index: 9;
                 position: relative;
             }
@@ -221,7 +209,7 @@
                 border: 5px outset #4cdb04;
             }
             .spoiler_v {
-                width: 98.1%;
+                width: 97.1%;
                 position: relative;
                 background-color: #f60000;
                 border: 5px outset #ff2626;
@@ -267,6 +255,9 @@
             .filetable {
                 width: 100%;
                 text-align: center;
+                transform: translate(2%);
+                -webkit-transform: translate(2%);
+                -ms-transform: translate(2%);
             }
             .filetable tr{
                 line-height: 30px;
@@ -275,7 +266,9 @@
                 margin: 0;
             }
             .panorama {
-                margin: 50px 0 0 0;
+                margin: 50px 0 10px 0;
+                display: flex;
+                justify-content: center;
             }
             .panorama img {
                 width: 500px;
@@ -288,7 +281,6 @@
                 width: 500px;
                 display: inline-block;
                 position: absolute;
-                left: 10px;
                 z-index: 9;
                 text-align: center;
                 padding: 10px 0 10px 0;
@@ -301,8 +293,8 @@
             .icon {
                 background-position: center;
                 background-size: contain;
-                height: 45px;
-                width: 45px;
+                height: 35px;
+                width: 35px;
                 display: inline-block;
                 position: relative;
                 position: absolute;
@@ -396,31 +388,15 @@
                 font-weight: bold;
                 text-shadow: 2px 2px #00000050;
             }
+            #webgl {
+                height: 100%;
+                width: 100%;
+                position: fixed;
+            }
         </style>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script>
-
-             $(document).ready(function() {
-
-                $(".fullbox").click(function(){
-                    $(this).parent().next().slideToggle("slow")
-                });
-
-                $(".fullbox_install").click(function(){
-                    $(this).parent().next().slideToggle("slow")
-                });
-
-                $(".filebox").click(function(){
-                    $(this).parent().next().slideToggle("slow")
-                });
-                $(".spoiler").click(function(){
-                    $(this).parent().next().slideToggle("slow")
-                });
-                $(".spoiler_v").click(function(){
-                    $(this).parent().next().slideToggle("slow")
-                });
-
-                var backgrounds = [
+            var backgrounds = [
                                     'https://i.imgur.com/huCkKYl.jpg', 
                                     'https://i.imgur.com/19RcRkJ.jpg', 
                                     'https://i.imgur.com/EK6XQMI.jpg',
@@ -448,6 +424,32 @@
 
                 var randomN = random;
 
+                localStorage.setItem('random', randomN)
+        </script>
+        <script>
+
+             $(document).ready(function() {
+
+                $(".fullbox").click(function(){
+                    $(this).parent().next().slideToggle("slow")
+                });
+
+                $(".fullbox_install").click(function(){
+                    $(this).parent().next().slideToggle("slow")
+                });
+
+                $(".filebox").click(function(){
+                    $(this).parent().next().slideToggle("slow")
+                });
+                $(".spoiler").click(function(){
+                    $(this).parent().next().slideToggle("slow")
+                });
+                $(".spoiler_v").click(function(){
+                    $(this).parent().next().slideToggle("slow")
+                });
+
+                var randomN = localStorage.getItem('random');
+
                 $("#background").css("background-image", "url('"+backgrounds[randomN]+"')")
 
                 $("#rsp").css("background-image", "url('"+rsp_backgrounds[randomN]+"')")
@@ -457,9 +459,146 @@
                 $(':root').css("--bh", height);
              });
         </script>
+        <script type="module">          
+            import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
+            import { OrbitControls } from 'https://cdn.skypack.dev/three@0.134.0/examples/jsm/controls/OrbitControls.js';
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera( 91, window.innerWidth / window.innerHeight, 0.1, 1000 );
+            
+            const renderer = new THREE.WebGLRenderer( { canvas: webgl } );
+            renderer.setSize( window.innerWidth, window.innerHeight );
+
+            var randomN = localStorage.getItem('random');
+
+            backgrounds = [
+                [ //1.8 1
+                    'https://i.imgur.com/rfxouXD.png', //panorama_1
+                    'https://i.imgur.com/Oq95gtg.png', //panorama_3
+                    'https://i.imgur.com/EMEmjVN.png', //panorama_4
+                    'https://i.imgur.com/pI1EAYJ.png', //panorama_5
+                    'https://i.imgur.com/cGzRoby.png', //panorama_0
+                    'https://i.imgur.com/pLFDdB4.png'  //panorama_2
+                ],
+                [ //1.8 1
+                    'https://i.imgur.com/y58wSYo.png', //panorama_1
+                    'https://i.imgur.com/c6FhZxD.png', //panorama_3
+                    'https://i.imgur.com/7KwzDJW.png', //panorama_4
+                    'https://i.imgur.com/NiRJBh0.png', //panorama_5
+                    'https://i.imgur.com/X6aP2Te.png', //panorama_0
+                    'https://i.imgur.com/mDYgUKG.png'  //panorama_2
+                ],
+                [ //1.10
+                    'https://i.imgur.com/66AFirr.png', //panorama_1
+                    'https://i.imgur.com/4bNCpgV.png', //panorama_3
+                    'https://i.imgur.com/csXHOab.png', //panorama_4
+                    'https://i.imgur.com/YNindzT.png', //panorama_5
+                    'https://i.imgur.com/CwLQtRD.png', //panorama_0
+                    'https://i.imgur.com/Em7ILkY.png'  //panorama_2
+                ],
+                [ //1.12 1
+                    'https://i.imgur.com/an1W3Gi.png', //panorama_1
+                    'https://i.imgur.com/cr5KiAY.png', //panorama_3
+                    'https://i.imgur.com/Swd5MCB.png', //panorama_4
+                    'https://i.imgur.com/XDEGAn9.png', //panorama_5
+                    'https://i.imgur.com/rxZJZXm.png', //panorama_0
+                    'https://i.imgur.com/XUrtjAR.png'  //panorama_2
+                ],
+                [ //1.12 2
+                    'https://i.imgur.com/Kicza5t.png', //panorama_1
+                    'https://i.imgur.com/przjEUj.png', //panorama_3
+                    'https://i.imgur.com/0SDzlnG.png', //panorama_4
+                    'https://i.imgur.com/CcmAcVB.png', //panorama_5
+                    'https://i.imgur.com/1H51LV5.png', //panorama_0
+                    'https://i.imgur.com/zzNHfOk.png'  //panorama_2
+                ],
+                [ //1.13
+                    'https://i.imgur.com/5qBKbmj.png', //panorama_1
+                    'https://i.imgur.com/BmLsuir.png', //panorama_3
+                    'https://i.imgur.com/jmiSDeR.png', //panorama_4
+                    'https://i.imgur.com/WzgO1cF.png', //panorama_5
+                    'https://i.imgur.com/qlSWk3x.png', //panorama_0
+                    'https://i.imgur.com/dHTpv4O.png'  //panorama_2
+                ],
+                [ //1.14
+                    'https://i.imgur.com/NdLsYDL.png', //panorama_1
+                    'https://i.imgur.com/QAnA1yT.png', //panorama_3
+                    'https://i.imgur.com/Vn0mCBu.png', //panorama_4
+                    'https://i.imgur.com/9TfJDdK.png', //panorama_5
+                    'https://i.imgur.com/Aiq8iOF.png', //panorama_0
+                    'https://i.imgur.com/pdMRCtq.png'  //panorama_2
+                ],
+                [ //1.15
+                    'https://i.imgur.com/MPErlMe.png', //panorama_1
+                    'https://i.imgur.com/uVdunRy.png', //panorama_3
+                    'https://i.imgur.com/ZWSlyvN.png', //panorama_4
+                    'https://i.imgur.com/sjwNB0g.png', //panorama_5
+                    'https://i.imgur.com/Zc00s3y.png', //panorama_0
+                    'https://i.imgur.com/2WwfHGg.png'  //panorama_2
+                ],
+                [ //1.16
+                    'https://i.imgur.com/bqqYEeK.png', //panorama_1
+                    'https://i.imgur.com/NBPw11I.png', //panorama_3
+                    'https://i.imgur.com/givMV9F.png', //panorama_4
+                    'https://i.imgur.com/bs0q45y.png', //panorama_5
+                    'https://i.imgur.com/ZqHivqE.png', //panorama_0
+                    'https://i.imgur.com/uGAF5Xf.png'  //panorama_2
+                ]
+            ]
+
+            scene.background = new THREE.CubeTextureLoader()
+                .load(backgrounds[randomN]);
+
+            window.addEventListener( 'resize', onWindowResize, false );
+
+            function onWindowResize(){
+
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+
+                renderer.setSize( window.innerWidth, window.innerHeight );
+            }
+
+
+            var direction = "down";
+            var speed = 0.00001 //0.00001
+            var basevalue = 0
+            
+
+            function animate() {
+                requestAnimationFrame( animate );
+
+                if (direction == "up")
+                {
+                    if (camera.rotation.x >= (basevalue + 0.025))
+                    {
+                        direction = "down";
+                        camera.rotation.x -= speed;
+                    }
+                    else {
+                        camera.rotation.x += speed;
+                    }
+                }
+                else {
+                    if (camera.rotation.x <= (basevalue - 0.025))
+                    {
+                        direction = "up";
+                        camera.rotation.x += speed;
+                    }
+                    else {
+                        camera.rotation.x -= speed;
+                    }
+                }
+				camera.rotation.y -= 0.00075; //0.00075
+                renderer.render( scene, camera );
+                
+            }
+            animate();
+        </script>
     </head>
     <body>
-        <div id="background" style="background-image: url('')"></div>
+        <canvas id="webgl"></canvas>
+        <div style="display: none;"  id="background" style="background-image: url('')"></div>
         <div id="logo"></div>
         <div class="whiteborder">
             <div class="mainbox">
@@ -511,7 +650,7 @@
 
                                 <div class="panorama" style="margin-top:15px;">
                                     <img src="https://i.imgur.com/JNt2cwx.jpg">
-                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
                                     <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.8¹</p></div>
                                 </div>
                                 <table class="filetable">
@@ -531,7 +670,7 @@
 
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/3si6zOz.jpg">
-                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
                                     <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.8²</p></div>
                                 </div>
                                 <table class="filetable">
@@ -551,7 +690,7 @@
 
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/e9xI34e.jpg">
-                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
                                     <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.10</p></div>
                                 </div>
                                 <table class="filetable">
@@ -571,7 +710,7 @@
 
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/8kGBD1Y.jpg">
-                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
                                     <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.12¹</p></div>
                                 </div>
                                 <table class="filetable">
@@ -591,7 +730,7 @@
 
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/BWFKfEm.jpg">
-                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
                                     <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.12²</p></div>
                                 </div>
                                 <table class="filetable">
@@ -611,7 +750,7 @@
 
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/LpVr7v2.jpg">
-                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
                                     <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.13</p></div>
                                 </div>
                                 <table class="filetable">
@@ -631,7 +770,7 @@
 
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/RjCIXpE.jpg">
-                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
                                     <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.14</p></div>
                                 </div>
                                 <table class="filetable">
@@ -651,7 +790,7 @@
 
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/mhZ3Q1L.jpg">
-                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
                                     <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.15</p></div>
                                 </div>
                                 <table class="filetable">
@@ -671,7 +810,7 @@
 
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/pVOaDhk.png">
-                                    <img style="position: absolute; left:10px" src="https://i.imgur.com/pzdOTwJ.png">
+                                    <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
                                     <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.16</p></div>
                                 </div>
                                 <table class="filetable">
@@ -812,7 +951,7 @@
             </div>
         </div>
         <br/>
-        <div class="whiteborder">
+        <div style="margin: 0 auto 0 auto;" class="whiteborder">
             <div class="mainbox_install">
                 <div class="blackborder_gui" style="margin-top:0;">
                     <div class="fullbox_install"><span class="icon" style="background-image: url('https://i.imgur.com/P97M9X3.gif');"></span>Installation</div>
@@ -820,10 +959,10 @@
                 <div class="blackborder_desc">
                     <div class="fullboxdesc">
                         <ol>
-                            <li>
+                            <li style="line-height: 150%;">
                                 Lade dir die Dateien herunter die du haben willst und speichere diese in deinem Minecraft <span class="specialt">resourcepacks</span> Verzeichnis.<br/><br/>
 
-                                <ul style="line-height: 150%;">
+                                <ul style="line-height: 170%;">
                                     <li><span class="bold">Windows</span><br/>
                                     Öffne <span class="specialt">Ausführen</span> im Startmenü oder mit Hilfe von <span class="specialb"><img class="iconuni" src="https://i.imgur.com/tZc2Eno.png"></span> + <span class="specialb">R</span> und gib <span class="specialt">%appdata%</span> ein. In diesem Verzeichnis öffnest du <span class="specialt">.minecraft</span> und darin befindet sich dein <span class="specialt">resourcepacks</span> Verzeichnis.</li>
                                     <br/>  
@@ -834,7 +973,7 @@
                                     Öffne deinen File-Manager und gib <span class="specialt">~/.minecraft/resourcepacks/</span> in der Adressleiste ein.</li>
                                     <br/>
                                     <li><span class="bold">Alternative</span><br/>
-                                    Starte Minecraft und geh auf <span class="specialblackb"><span class="specialbm">Options...</span></span>, <span class="specialblackb"><span class="specialbm">Resource Packs...</span></span> und drück auf <span class="specialblackb"><span class="specialbm">Open Pack Folder</span></span>.
+                                    Starte Minecraft und geh auf <span class="specialblackb"><span class="specialbm">Options...</span></span>, <span class="specialblackb"><span class="specialbm">Resource Packs...</span></span> und drück auf<br/><span class="specialblackb"><span class="specialbm">Open Pack Folder</span></span>.
                                 </ul>
                             </li>
                             <br/><br/>
