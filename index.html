@@ -18,6 +18,7 @@
             :root {
                 --bh: 1080px;
             }
+            @font-face { font-family: PressStart2P; src: url('PressStart2P-Regular.ttf'); } 
             html {
                 height: 100%;
             }
@@ -132,7 +133,7 @@
             }
             .whiteborder {
                 border: 4px solid #FFFFFF;
-                margin: 5% auto 0 auto;
+                margin: 2% auto 0 auto;
                 width: 800px;
                 z-index: 9;
                 position: relative;
@@ -284,6 +285,7 @@
                 z-index: 9;
                 text-align: center;
                 padding: 10px 0 10px 0;
+                cursor: pointer;
             }
             .panorama_name {
                 font-size: 25pt;
@@ -393,6 +395,53 @@
                 width: 100%;
                 position: fixed;
             }
+            #splashtext {
+                text-align: center;
+                background-color: rgba(255, 0, 0, 0);
+                margin: 0 auto 0 50%;
+                color: yellow;
+                width: 300px;
+                height: 50px;
+                font-family: PressStart2P;
+                text-shadow: 4px 4px rgb(77, 77, 0);
+                white-space: nowrap;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: translate(75%, -20%) rotateZ(-10deg) scale(1);
+                -webkit-transform: translate(75%, -20%) rotateZ(-10deg) scale(1);
+                -ms-transform: translate(75%, -20%) rotateZ(-10deg) scale(1);
+                animation-name: splashanimation;
+                animation-iteration-count: infinite;
+                animation-duration: 0.5s;
+                animation-timing-function: linear;
+                -webkit-transition: all 0.2s linear;
+                transition: all 0.2s linear;
+                -moz-transition: all 0.2s linear;
+                -o-transition: all 0.2s linear;
+            }
+            #splashtext_val {
+                font-size: 30pt;
+                display: inline-block;
+                outline: black;
+            }
+            @keyframes splashanimation {
+                0% {
+                    transform: translate(75%, -20%) rotateZ(-10deg) scale(1);
+                    -webkit-transform: translate(75%, -20%) rotateZ(-10deg) scale(1);
+                    -ms-transform: translate(75%, -20%) rotateZ(-10deg) scale(1);
+                }
+                50% {
+                    transform: translate(75%, -20%) rotateZ(-10deg) scale(1.1);
+                    -webkit-transform: translate(75%, -20%) rotateZ(-10deg) scale(1.1);
+                    -ms-transform: translate(75%, -20%) rotateZ(-10deg) scale(1.1);
+                }
+                100% {
+                    transform: translate(75%, -20%) rotateZ(-10deg) scale(1);
+                    -webkit-transform: translate(75%, -20%) rotateZ(-10deg) scale(1);
+                    -ms-transform: translate(75%, -20%) rotateZ(-10deg) scale(1);
+                }
+            }
         </style>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script>
@@ -426,7 +475,7 @@
 
                 localStorage.setItem('random', randomN)
         </script>
-        <script>
+        <script name="jquery">
 
              $(document).ready(function() {
 
@@ -457,9 +506,50 @@
                 var height = $('#background').css("height");
 
                 $(':root').css("--bh", height);
+
+                var splashtext = [
+                    'Am besten mit OptiFine',
+                    'youtube.com/unduguten',
+                    'von 9 von 10 Zahnärzten empfohlen',
+                    'JETZT FÜR 1.17 VERFÜGBAR',
+                    'Mit über 60 Kühen',
+                    'Download = Ehre',
+                    '+ Vanilla Tweaks'
+                ]
+
+                splashrandom = Math.floor(Math.random() * splashtext.length);
+
+                document.getElementById("splashtext_val").innerHTML = splashtext[splashrandom];
+
+                resize_to_fit();
+
+                $('.panorama').children().mouseenter(function() {
+                    var inhalt = $(this).children().html();
+                    $(this).children().html('Vorschau anzeigen');
+
+                    $('.panorama').children().mouseleave(function() {
+                    $(this).children().html(inhalt);
+                    });
+                });
+
+                function loadnewpanoramajs(which) {
+                    $("#rsp").css("background-image", "url('"+rsp_backgrounds[which]+"')")
+                }
              });
+
+             function resize_to_fit(){
+                var fontsize = $('#splashtext_val').css('font-size');
+                $('#splashtext_val').css('font-size', parseFloat(fontsize) - 1);
+                var shadow = parseFloat(fontsize) / 7;
+                $('#splashtext').css('text-shadow', 'rgb(77, 77, 0) '+shadow+'px '+shadow+'px');
+
+                if($('#splashtext_val').width() >= $('#splashtext').width()){
+                    resize_to_fit();
+                }
+            }
+
         </script>
-        <script type="module">          
+        <script name="three" type="module">          
             import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
             import { OrbitControls } from 'https://cdn.skypack.dev/three@0.134.0/examples/jsm/controls/OrbitControls.js';
             
@@ -480,7 +570,7 @@
                     'https://i.imgur.com/cGzRoby.png', //panorama_0
                     'https://i.imgur.com/pLFDdB4.png'  //panorama_2
                 ],
-                [ //1.8 1
+                [ //1.8 2
                     'https://i.imgur.com/y58wSYo.png', //panorama_1
                     'https://i.imgur.com/c6FhZxD.png', //panorama_3
                     'https://i.imgur.com/7KwzDJW.png', //panorama_4
@@ -589,17 +679,38 @@
                         camera.rotation.x -= speed;
                     }
                 }
-				camera.rotation.y -= 0.00075; //0.00075
+				camera.rotation.y -= 0.001; //0.00075
                 renderer.render( scene, camera );
                 
             }
             animate();
+
+            document.getElementById("loadbackground_0").onclick = function() {loadnewpanorama(0)};
+            document.getElementById("loadbackground_1").onclick = function() {loadnewpanorama(1)};
+            document.getElementById("loadbackground_2").onclick = function() {loadnewpanorama(2)};
+            document.getElementById("loadbackground_3").onclick = function() {loadnewpanorama(3)};
+            document.getElementById("loadbackground_4").onclick = function() {loadnewpanorama(4)};
+            document.getElementById("loadbackground_5").onclick = function() {loadnewpanorama(5)};
+            document.getElementById("loadbackground_6").onclick = function() {loadnewpanorama(6)};
+            document.getElementById("loadbackground_7").onclick = function() {loadnewpanorama(7)};
+            document.getElementById("loadbackground_8").onclick = function() {loadnewpanorama(8)};
+
+            function loadnewpanorama(which) {
+                scene.background = new THREE.CubeTextureLoader()
+                .load(backgrounds[which]);
+
+                loadnewpanoramajs(which);
+            }
+
+            
+            
         </script>
     </head>
     <body>
         <canvas id="webgl"></canvas>
         <div style="display: none;"  id="background" style="background-image: url('')"></div>
         <div id="logo"></div>
+        <div id="splashtext"><div id="splashtext_val"></div></div>
         <div class="whiteborder">
             <div class="mainbox">
 
@@ -651,7 +762,7 @@
                                 <div class="panorama" style="margin-top:15px;">
                                     <img src="https://i.imgur.com/JNt2cwx.jpg">
                                     <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
-                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.8¹</p></div>
+                                    <div class="panorama_name_div" id="loadbackground_0"><p class="panorama_name">Vanilla 1.8¹</p></div>
                                 </div>
                                 <table class="filetable">
                                     <tr>
@@ -671,7 +782,7 @@
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/3si6zOz.jpg">
                                     <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
-                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.8²</p></div>
+                                    <div class="panorama_name_div" id="loadbackground_1"><p class="panorama_name">Vanilla 1.8²</p></div>
                                 </div>
                                 <table class="filetable">
                                     <tr>
@@ -691,7 +802,7 @@
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/e9xI34e.jpg">
                                     <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
-                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.10</p></div>
+                                    <div class="panorama_name_div" id="loadbackground_2"><p class="panorama_name">Vanilla 1.10</p></div>
                                 </div>
                                 <table class="filetable">
                                     <tr>
@@ -711,7 +822,7 @@
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/8kGBD1Y.jpg">
                                     <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
-                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.12¹</p></div>
+                                    <div class="panorama_name_div" id="loadbackground_3"><p class="panorama_name">Vanilla 1.12¹</p></div>
                                 </div>
                                 <table class="filetable">
                                     <tr>
@@ -731,7 +842,7 @@
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/BWFKfEm.jpg">
                                     <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
-                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.12²</p></div>
+                                    <div class="panorama_name_div" id="loadbackground_4"><p class="panorama_name">Vanilla 1.12²</p></div>
                                 </div>
                                 <table class="filetable">
                                     <tr>
@@ -751,7 +862,7 @@
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/LpVr7v2.jpg">
                                     <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
-                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.13</p></div>
+                                    <div class="panorama_name_div" id="loadbackground_5"><p class="panorama_name">Vanilla 1.13</p></div>
                                 </div>
                                 <table class="filetable">
                                     <tr>
@@ -771,7 +882,7 @@
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/RjCIXpE.jpg">
                                     <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
-                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.14</p></div>
+                                    <div class="panorama_name_div" id="loadbackground_6"><p class="panorama_name">Vanilla 1.14</p></div>
                                 </div>
                                 <table class="filetable">
                                     <tr>
@@ -791,7 +902,7 @@
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/mhZ3Q1L.jpg">
                                     <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
-                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.15</p></div>
+                                    <div class="panorama_name_div" id="loadbackground_7"><p class="panorama_name">Vanilla 1.15</p></div>
                                 </div>
                                 <table class="filetable">
                                     <tr>
@@ -811,7 +922,7 @@
                                 <div class="panorama">
                                     <img src="https://i.imgur.com/pVOaDhk.png">
                                     <img style="position: absolute;" src="https://i.imgur.com/pzdOTwJ.png">
-                                    <div class="panorama_name_div"><p class="panorama_name">Vanilla 1.16</p></div>
+                                    <div class="panorama_name_div" id="loadbackground_8"><p class="panorama_name">Vanilla 1.16</p></div>
                                 </div>
                                 <table class="filetable">
                                     <tr>
