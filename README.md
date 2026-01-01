@@ -17,10 +17,10 @@ Here you can report bugs and submit suggestions. To do so, go to the [Issues pag
 
 Please report Bugs that are not Resource Pack relevant but related to a Mod on their respective Issue Tracker
 
-- [OptiFine Issue Tracker](https://github.com/sp614x/optifine/issues)
 - [Entity Texture Features Issue Tracker](https://github.com/Traben-0/Entity_Texture_Features/issues)
 - [Entity Model Features Issue Tracker](https://github.com/Traben-0/Entity_Model_Features/issues)
-- [CIT Resewn Issute Tracker](https://github.com/SHsuperCM/CITResewn/issues) 
+- [CIT Resewn Issute Tracker](https://github.com/SHsuperCM/CITResewn/issues)
+- [OptiFine Issue Tracker](https://github.com/sp614x/optifine/issues)
 
 <div align="center">
 
